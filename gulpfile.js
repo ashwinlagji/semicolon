@@ -2,6 +2,8 @@ const gulp = require('gulp');
 const HubRegistry = require('gulp-hub');
 const browserSync = require('browser-sync');
 
+const ghPages = require('gulp-gh-pages');
+
 const conf = require('./conf/gulp.conf');
 
 // Load some files into the registry
@@ -22,6 +24,11 @@ function reloadBrowserSync(cb) {
   browserSync.reload();
   cb();
 }
+
+gulp.task('deploy', function() {
+    return gulp.src('./dist/**/*')
+        .pipe(ghPages());
+});
 
 function watch(done) {
   gulp.watch(conf.path.tmp('index.html'), reloadBrowserSync);
