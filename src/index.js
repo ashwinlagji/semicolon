@@ -1,3 +1,4 @@
+/* eslint-disable */
 var angular = require('angular');
 
 require('angular-ui-router');
